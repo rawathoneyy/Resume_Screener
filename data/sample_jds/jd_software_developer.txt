@@ -1,0 +1,48 @@
+SOFTWARE DEVELOPER — PYTHON / DJANGO
+
+Job Summary
+
+We are looking for a Software Developer with 1–3 years of experience in backend and web application development. The candidate will be responsible for building, maintaining, testing, and improving software applications using Python and Django.
+
+Required Skills
+
+- Strong programming skills in Python.
+- Hands-on experience with Django.
+- Experience developing backend web applications.
+- Experience building and integrating REST APIs.
+- Strong knowledge of SQL and relational databases.
+- Experience with PostgreSQL or MySQL.
+- Good understanding of object-oriented programming.
+- Experience using Git and version control.
+- Strong debugging and problem-solving skills.
+- Basic knowledge of HTML, CSS, and JavaScript.
+- Good understanding of database design and SQL queries.
+- Experience writing clean, reusable, and maintainable code.
+
+Key Responsibilities
+
+- Develop and maintain backend applications using Python and Django.
+- Design and develop RESTful APIs for web and mobile applications.
+- Create and optimize SQL queries for relational databases.
+- Work with PostgreSQL databases and database models.
+- Debug application and API issues and implement effective solutions.
+- Develop new software features based on business requirements.
+- Write unit tests and perform application testing.
+- Use Git for source control and participate in code reviews.
+- Collaborate with frontend developers and other software engineers.
+- Improve application performance, reliability, and maintainability.
+- Document software functionality and technical changes.
+- Participate in the complete software development lifecycle.
+
+Preferred Qualifications
+
+- Bachelor's degree in Computer Science, Information Technology, Engineering, or a related field.
+- 1–3 years of professional software development experience.
+- Experience with Django REST Framework is a plus.
+- Familiarity with JavaScript and frontend integration.
+- Experience with API authentication and authorization is a plus.
+- Experience working in an Agile development environment is preferred.
+
+Education
+
+Bachelor's degree in Computer Science, Information Technology, Engineering, or a related technical field.
