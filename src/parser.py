@@ -6,14 +6,17 @@ import sys
 import pdfplumber
 
 
-def extract_text_from_pdf(file_path: str) -> str:
+def extract_text_from_pdf(file_path) -> str:
     """Open a PDF and return all extractable page text as one string.
 
     Pages with no text layer (for example scanned images) are skipped
     instead of raising an error.
     """
-    # Resolve the path so relative filenames work from any working directory.
-    pdf_path = Path(file_path)
+        # Resolve the path so relative filenames work from any working directory.
+    # A plain string/Path gets wrapped here; an in-memory file-like object
+    # (e.g. from Streamlit's file_uploader) is passed straight through,
+    # since pdfplumber.open() accepts both directly.
+    pdf_path = Path(file_path) if isinstance(file_path, (str, Path)) else file_path
 
     # Collect text from each page that actually has extractable content.
     page_texts: list[str] = []
