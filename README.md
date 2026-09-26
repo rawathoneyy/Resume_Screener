@@ -33,7 +33,7 @@ Streamlit UI
 - **Frontend:** Streamlit
 - **PDF parsing:** pdfplumber
 - **Embeddings / semantic similarity:** Gemini API
-- **Keyword extraction:** spaCy
+- **Keyword extraction:** Curated skill taxonomy with regex-based variant matching
 - **Natural-language summary:** Groq API (LLM)
 
 ## A technical detail worth mentioning
