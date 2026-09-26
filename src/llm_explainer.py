@@ -11,20 +11,30 @@ load_dotenv()
 _client = None
 
 
+def _get_api_key(key_name: str) -> str | None:
+    """Look for a secret first in Streamlit Cloud's st.secrets (used when
+    deployed), falling back to a plain environment variable / .env file
+    (used for local development)."""
+    try:
+        import streamlit as st
+        if key_name in st.secrets:
+            return st.secrets[key_name]
+    except Exception:
+        pass
+    return os.environ.get(key_name)
+
+
 def _get_client():
-    """Create the Groq client once, lazily, so importing this module
-    doesn't fail if GROQ_API_KEY isn't set yet (e.g. during testing)."""
     global _client
     if _client is None:
-        api_key = os.environ.get("GROQ_API_KEY")
+        api_key = _get_api_key("GROQ_API_KEY")
         if not api_key:
             raise ValueError(
-                "GROQ_API_KEY not found. Make sure you created a .env file "
-                "in the project root with a line like GROQ_API_KEY=your_key."
+                "GROQ_API_KEY not found. Add it to .env locally, or to "
+                "Streamlit Cloud's Secrets settings when deployed."
             )
         _client = Groq(api_key=api_key)
     return _client
-
 
 def explain_match(score: float, missing_skills: list[str]) -> str:
     """Ask an LLM to explain a match score and missing skills in plain
