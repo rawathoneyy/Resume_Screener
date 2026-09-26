@@ -102,8 +102,13 @@ if analyze_clicked:
         st.stop()
 
     with st.spinner("Analyzing..."):
-        from embedder import compute_similarity  # loaded only when needed
+        # Lazy import: only loads the embedding model when Analyze is
+        # actually clicked, not the moment the page opens.
+        from embedder import compute_similarity
 
+        # uploaded_resume is an in-memory file-like object from Streamlit,
+        # not a file path — extract_text_from_pdf (updated in parser.py)
+        # accepts both.
         resume_text = extract_text_from_pdf(uploaded_resume)
 
         if not resume_text.strip():
@@ -150,5 +155,22 @@ if analyze_clicked:
             '<span class="matched-tag">No obvious gaps found</span>',
             unsafe_allow_html=True,
         )
+
+    # ---- AI-generated summary (Phase 5) ----
+    st.write("")
+    st.markdown("**AI summary**")
+    try:
+        with st.spinner("Generating summary..."):
+            # Lazy import: only loads Groq's client and reads the .env key
+            # when actually needed, same lazy-loading principle as embedder.
+            from llm_explainer import explain_match
+
+            summary = explain_match(score, missing_skills)
+        st.info(summary)
+    except ValueError as e:
+        # If the LLM call fails for any reason (missing key, API issue),
+        # the score and missing-skills results above still work correctly -
+        # this feature fails gracefully rather than breaking the whole page.
+        st.warning(f"Couldn't generate AI summary: {e}")
 else:
     st.info("Upload a resume and paste a job description, then click Analyze match.")
